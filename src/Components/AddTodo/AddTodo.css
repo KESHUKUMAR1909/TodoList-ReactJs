@@ -1,0 +1,13 @@
+.add-todo{
+    display: flex;
+    gap: 10px;
+}
+.add-todo>input{
+    width: 77%;
+    padding: 20px;
+    border-radius: 20px;
+}
+.add-todo>button{
+    border-radius: 20px;
+    width: 10%;
+}

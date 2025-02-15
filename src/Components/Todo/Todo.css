@@ -1,0 +1,29 @@
+.todo-Container{
+    display: flex;
+    width: 100%;
+}
+.todo{
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+   
+}
+.todo>input[type="checkbox"]{
+    width: 20px;
+}
+.todo>p{
+    font-size: 20px;
+}
+.button{
+    display: flex;
+    width: 200px;
+    gap: 10px;
+}
+button{
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
