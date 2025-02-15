@@ -1,4 +1,4 @@
-cat <<EOF > README.md
+
 # 📌 React Todo List
 
 A simple and interactive Todo List App built with ReactJS using Context API for state management.
@@ -83,4 +83,4 @@ _(Add a screenshot or demo link here)_
 This project is open-source and free to use.  
 
 🚀 **Happy Coding!** 😃
-EOF
+
