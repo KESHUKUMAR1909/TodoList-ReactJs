@@ -1,16 +1,10 @@
 import { useState, useContext } from "react";
-import TodoContext from "../../Context/TodoContext";
-import "./AddTodo.css"
+import TodoDispatchContext from "../../Context/TodoDispatchContext";
+import "./AddTodo.css";
 
 function AddTodo() {
-    const { list, setList } = useContext(TodoContext);
-    const [newTodo, setNewTodo] = useState("");
-
-    function addTodo() {
-        if (newTodo.trim() === "") return;
-        setList([...list, { id: list.length + 1, todoData: newTodo, finished: false }]);
-        setNewTodo("");
-    }
+    const { dispatch } = useContext(TodoDispatchContext);
+    const [newTodo, setNewTodo] = useState(""); 
 
     return (
         <div className="add-todo">
@@ -20,7 +14,13 @@ function AddTodo() {
                 placeholder="Enter New Todo"
                 onChange={(e) => setNewTodo(e.target.value)} 
             />
-            <button onClick={addTodo}>Add</button>
+            <button onClick={() => {
+                if (newTodo.trim() === "") return; 
+                dispatch({ type: "add_todo", payload: { todoText: newTodo } });
+                setNewTodo(""); 
+            }}>
+                Add
+            </button>
         </div>
     );
 }

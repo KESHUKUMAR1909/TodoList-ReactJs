@@ -1,41 +1,41 @@
 import { useContext } from "react";
 import Todo from "../Todo/Todo";
 import TodoContext from "../../Context/TodoContext";
+import TodoDispatchContext from "../../Context/TodoDispatchContext";
 
 function TodoList() {
-    const { list, setList } = useContext(TodoContext);
+    const { list } = useContext(TodoContext);  
+    const { dispatch } = useContext(TodoDispatchContext);
 
     function editTodo(id, todoText) {
-        const updatedList = list.map(todo =>
-            todo.id === id ? { ...todo, todoData: todoText } : todo
-        );
-        setList(updatedList);
+        dispatch({ type: "edit_todo", payload: { id, todoText } });
     }
 
     function deleteTodo(id) {
-        setList(list.filter(todo => todo.id !== id));
+        dispatch({ type: "delete_todo", payload: { id } });
     }
 
-    function toggleFinished(id) {
-        const updatedList = list.map(todo =>
-            todo.id === id ? { ...todo, finished: !todo.finished } : todo
-        );
-        setList(updatedList);
+    function toggleFinished(id, finished) {
+        dispatch({ type: "Finished", payload: { id, isFinished: finished } });
     }
 
     return (
         <>
-            {list.map((todo) => (
-                <Todo 
-                    todoText={todo.todoData} 
-                    key={todo.id} 
-                    id={todo.id} 
-                    finished={todo.finished} 
-                    EditTodo={editTodo} 
-                    DeleteTodo={deleteTodo} 
-                    ToggleFinished={toggleFinished}
-                />
-            ))}
+            {list.length > 0 ? (
+                list.map((todo) => (
+                    <Todo
+                        todoText={todo.todoData}  
+                        key={todo.id}
+                        id={todo.id}
+                        finished={todo.finished}
+                        EditTodo={editTodo}
+                        DeleteTodo={deleteTodo}
+                        ToggleFinished={toggleFinished}
+                    />
+                ))
+            ) : (
+                <p>No todos yet.</p>
+            )}
         </>
     );
 }

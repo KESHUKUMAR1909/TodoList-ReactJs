@@ -1,29 +1,65 @@
-.todo-Container{
+.todo-Container {
     display: flex;
     width: 100%;
+    align-items: center;  /* Ensure everything aligns properly */
 }
-.todo{
+
+.todo {
     margin-top: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid grey;
     display: flex;
+    align-items: center; 
     width: 100%;
     justify-content: space-between;
-   
+    gap: 15px; /* Adds spacing between elements */
 }
-.todo>input[type="checkbox"]{
+
+.todo > input[type="checkbox"] {
     width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
-.todo>p{
-    font-size: 20px;
+
+.todo > p {
+    color: black;
+    font-size: 18px; /* Slightly reduced for better layout */
+    flex-grow: 1; /* Allows text to expand properly */
+    word-break: break-word; /* Prevents long text from breaking layout */
 }
-.button{
+
+.todo input[type="text"] {
+    font-size: 18px;
+    padding: 5px;
+    width: 100%;
+    min-width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button {
     display: flex;
-    width: 200px;
+    min-width: 150px; /* Adjusted for consistency */
     gap: 10px;
+    align-items: center;
 }
-button{
+
+button {
     border-radius: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
